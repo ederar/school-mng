@@ -1,0 +1,71 @@
+{% extends "admin/admin_base.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center my-5"> Dashboard</h1>
+        <div class="dashboard">
+             <div class="row">
+             <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info text-center">
+                                    <h4 class="card-title">Classes</h4>
+                                    <a href=""><h4>{{classes| length}}</h4></a>
+                             </div>
+                            </div>
+                            <div class="col-md-4">
+                                    <i class="fas fa-id-card fa-4x"></i>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-md-4">
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info text-center">
+                                    <h4 class="card-title">Teachers</h4>
+                                    <a href="{{path('admin_teachers')}}"><h4>{{teachers| length}}</h4></a>
+                             </div>
+                            </div>
+                            <div class="col-md-4">
+                                    <i class="fas fa-id-card fa-4x"></i>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-md-4">
+                    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info text-center">
+                                    <h4 class="card-title">Students</h4>
+                                    <a href=""><h4>{{students| length}}</h4></a>
+                             </div>
+                            </div>
+                            <div class="col-md-4">
+                                    <i class="fas fa-id-card fa-4x"></i>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+
+
+      <style>
+        .dashboard a{
+            text-decoration:none;
+            color: white;
+        }
+    </style>
+{% endblock %}

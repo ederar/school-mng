@@ -1,0 +1,42 @@
+{% extends "student/base.html.twig" %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1 class="text-center mb-5">My Marks</h1>
+       
+               <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Matiere</th>
+                    <th scope="col">Exam One</th>
+                    <th scope="col">Exam Two</th>
+                    <th scope="col">General Note</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    
+                    {% if notes %}
+                        {% for note in notes %}
+                            <tr class="table-info">
+                                <th scope="row">{{note.matiere}}</th>
+                                <td>{{note.exam_one}}</td>
+                                <td>{{note.exam_two}}</td>
+                                <td>
+                                    {{ (note.exam_two + note.exam_one / 3 )| round(1,'floor') }}
+                                </td>
+                            </tr> 
+                    {% endfor %}
+                        {% else %}
+                        <tr class="table-info">
+                                <th scope="row"></th>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                </td>
+                            </tr> 
+                    {% endif %}
+                </tbody>
+    </table>
+    </div>
+{% endblock %}

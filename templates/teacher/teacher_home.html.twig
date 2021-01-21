@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher Home !{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="dashboard my-5">
+        <h1 class="text-center mb-5">Welcome {{teacher.firstName}} </h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="info text-center">
+                                    <h4 class="card-title">Classes</h4>
+                                    <a href="{{path('teacher_classes')}}"><h4>{{teacher.classRoom| length}}</h4></a>
+                             </div>
+                            </div>
+                            <div class="col-md-4">
+                                    <i class="fas fa-id-card fa-4x"></i>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                            <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="info text-center">
+                                        <h4>Students</h4>
+                                        <a href="{{path('teacher_students')}}"> <h4 class="card-title">{{students| length}}</h4></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                        <i class="fas fa-users fa-4x"></i>
+                                </div>
+                            </div>                            
+                            </div>
+                        </div>
+                </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                            <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="info text-center">
+                                        <h4 class="card-title">Emploi</h4>
+                                        <h4>4</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="far fa-calendar-alt fa-4x"></i>
+                                </div>
+                            </div>                            
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .dashboard a{
+            text-decoration:none;
+            color: white;
+        }
+    </style>
+{% endblock %}

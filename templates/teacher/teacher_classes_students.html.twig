@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container my-5">
+        <h1 class="mb-3 text-center">Class {{class.title}}</h1>
+           <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Student</th>
+                                <th scope="col">Class</th>
+                                <th scope="col">Section</th>
+                                <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                          {% for student in students %}
+                                    <tr class="table-info">
+                                    <th scope="row">{{student.id}}</th>
+                                    <td>{{student.firstName}} {{student.lastName}}</td>
+                                    <td>{{student.classroom.title}}</td>
+                                    <td>{{student.classroom.section}}</td>
+                                    <td>
+                                        <a href="{{path('teacher_add_marks',{'id': student.id})}}" class="btn btn-danger">Marks</a>
+                                    </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                </table>
+    </div>
+{% endblock %}

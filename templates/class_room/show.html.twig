@@ -1,0 +1,31 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}ClassRoom{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-5">ClassRoom</h1>
+    <div class="container">
+            <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ class_room.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ class_room.title }}</td>
+            </tr>
+            <tr>
+                <th>Section</th>
+                <td>{{ class_room.section }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('class_room_index') }}" class="btn btn-info">Back To List</a>
+
+    <a href="{{ path('class_room_edit', {'id': class_room.id}) }}" class="btn btn-info ml-2">Edit</a>
+
+    {{ include('class_room/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

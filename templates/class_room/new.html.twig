@@ -1,0 +1,18 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}New ClassRoom{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-5">Create new ClassRoom</h1>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                {{ include('class_room/_form.html.twig') }}
+            </div>
+        </div>
+        <a href="{{ path('class_room_index') }}">back to list</a>
+    </div>
+
+{% endblock %}

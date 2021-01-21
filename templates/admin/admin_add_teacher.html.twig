@@ -1,0 +1,24 @@
+{% extends "admin/admin_base.html.twig" %}
+
+{% block body %}
+    <div class="container mb-5">
+        <h1 class="text-center my-3">Add Teacher</h1>
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                <button type="submit" class="btn btn-info">Add </button>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+ {% block javascripts %}
+    <script>
+        $("#add_teacher_role").val("2").hide();
+    </script>
+ {% endblock %}

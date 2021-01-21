@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center my-5">Mark</h1>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            {{form_start(form)}}
+           {{form_widget(form)}}
+                <label for="mark_matiere" >Matiere</label>
+                 <select  class="form-control mb-3" name="student[marks][__name__][matiere]" id="student_marks___name___matiere">
+                   <option value="{{app.user.matiere.id}}">{{app.user.matiere.name}}</option>
+                 </select>
+               <button type="submit" class="btn btn-info">Save</button>
+            {{form_end(form)}}
+        </div>
+    </div>
+</div>
+  
+{% endblock %}
+
+
+{% block _student_marks_widget %}
+   {{ form_widget(form) }}
+   <button id="add_mark" class="btn btn-info">Add Mark</button>
+{% endblock %}
+
+{% block _student_marks_entry_row %}
+   {{ form_widget(form) }}
+{% endblock %}
+
+ {% block _student_marks_entry_widget %}
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+               {{form_widget(form.examOne)}}
+            </div>
+            <div class="col">
+                {{form_widget(form.examTwo)}}
+            </div>
+        </div>
+    </div>
+ {% endblock %}
+
+ {% block javascripts %}
+    <script>
+          studentFirstName = $('#student_firstName').attr('readonly', true);
+          studentLastName = $('#student_lastName').attr('readonly', true);
+          examOne = $('#student_marks___name___examOne').removeAttr("required");
+
+
+          $('#add_mark').click(function(){
+            const tpl = $('#student_marks').data('prototype');
+            $('#student_marks').append(tpl);
+          })
+
+    </script>
+{% endblock %}

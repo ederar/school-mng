@@ -1,0 +1,69 @@
+security:
+    encoders:
+        App\Entity\Student:
+            algorithm: auto
+        App\Entity\Teacher:
+            algorithm: auto
+        App\Entity\Admin:
+            algorithm: auto
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        users_in_memory: { memory: null }
+        student_provider:
+            entity:
+                class: App\Entity\Student
+                property: email
+        admin_provider:
+            entity:
+                class: App\Entity\Admin
+                property: email
+        teacher_provider:
+            entity:
+                class: App\Entity\Teacher
+                property: email
+    firewalls:
+        teacher:
+            pattern: ^/teacher
+            anonymous: true
+            provider: teacher_provider
+            form_login:
+                login_path: teacher_log
+                check_path: teacher_log
+                default_target_path: teacher_home
+            logout:
+                path: teacher_logout
+                target: teacher_log
+
+        admin:
+            pattern: ^/admin
+            anonymous: true
+            provider: admin_provider
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+                default_target_path: admin_home
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            provider: student_provider
+            form_login:
+                login_path: student_login
+                check_path: student_login
+            logout:
+                path: student_logout
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/teacher/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/teacher, roles: ROLE_SUPER_ADMIN }   
+        - { path: ^/student/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/student, roles: ROLE_USER }
