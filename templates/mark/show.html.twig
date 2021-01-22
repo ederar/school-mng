@@ -1,0 +1,32 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Mark{% endblock %}
+
+{% block body %}
+  <div class="container my-5">
+      <h1 class="mb-5">Mark</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mark.id }}</td>
+            </tr>
+            <tr>
+                <th>ExamOne</th>
+                <td>{{ mark.examOne }}</td>
+            </tr>
+            <tr>
+                <th>ExamTwo</th>
+                <td>{{ mark.examTwo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('mark_index') }}">back to list</a>
+
+    <a href="{{ path('mark_edit', {'id': mark.id}) }}">edit</a>
+
+    {{ include('mark/_delete_form.html.twig') }}
+  </div>
+{% endblock %}

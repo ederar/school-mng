@@ -65,4 +65,15 @@ class MarkRepository extends ServiceEntityRepository
         // returns an array of arrays (i.e. a raw data set)
         return $stmt->fetchAll();
     }
+
+    public function marksWithStudentInfo()
+    {
+        return $this->createQueryBuilder('m')
+        ->select('m.examOne as examone , m.id , m.examTwo as examtwo , s.firstName as firstname , s.lastName as lastname , d.name as matiere')
+        ->join('m.student','s')
+        ->join('m.matiere','d')
+        ->getQuery()
+        ->getResult()
+    ;
+    }
 }
